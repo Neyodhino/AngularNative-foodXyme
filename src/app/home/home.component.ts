@@ -4,18 +4,13 @@ import * as app from "tns-core-modules/application";
 
 @Component({
     selector: "Home",
-    templateUrl: "./home.component.html"
+    templateUrl: "./home.component.html",
+    styleUrls: ["./home.component.scss"]
 })
 export class HomeComponent implements OnInit {
 
     constructor() {
         // Use the component constructor to inject providers.
-        var object = [
-            {name: "Awofisayo Olaniyi"},
-            {Age: 30}
-        ];
-
-        console.log(object);
     }
 
     ngOnInit(): void {
