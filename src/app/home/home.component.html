@@ -1,69 +1,69 @@
 <ActionBar class="action-bar">
-    <!--
-    Use the NavigationButton as a side-drawer button in Android
-    because ActionItems are shown on the right side of the ActionBar
-    -->
-    <NavigationButton ios:visibility="collapsed" icon="res://menu" (tap)="onDrawerButtonTap()"></NavigationButton>
-    <!--
-    Use the ActionItem for IOS with position set to left. Using the
-    NavigationButton as a side-drawer button in iOS is not possible,
-    because its function is to always navigate back in the application.
-    -->
-    <ActionItem icon="res://navigation/menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()"
-        ios.position="left">
-    </ActionItem>
-    <Label class="action-bar-title" text="Select from category"></Label>
-</ActionBar>
+        <!--
+        Use the NavigationButton as a side-drawer button in Android
+        because ActionItems are shown on the right side of the ActionBar
+        -->
+        <NavigationButton ios:visibility="collapsed" icon="res://menu" (tap)="onDrawerButtonTap()"></NavigationButton>
+        <!--
+        Use the ActionItem for IOS with position set to left. Using the
+        NavigationButton as a side-drawer button in iOS is not possible,
+        because its function is to always navigate back in the application.
+        -->
+        <ActionItem icon="res://navigation/menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()"
+            ios.position="left">
+        </ActionItem>
+        <Label class="action-bar-title" text="Select from category"></Label>
+    </ActionBar>
+<GridLayout rows="auto, auto, auto, auto, auto" class="page page-content" >
 
-<GridLayout rows="auto, auto, auto, auto, auto">
-
-    <CardView class="cardStyle" elevation="10" radius="2" row="0" style="margin-top: 20px;" margin="10">
-        <StackLayout orientation="horizontal" style="padding: 70px;">
-            <Label text="&#xf0f5;" class="fab"></Label>
-            <StackLayout class="category">
-                <Label text="Restaurants" class="vendorName"></Label>
-                <Label text="Food you love, from the restaurant you love" class=""></Label>
+        <CardView class="cardStyle" elevation="10" radius="2" row="0" style="margin-top: 20px;" margin="10" (tap) = "onNavItemTap('/home/vendors')">
+            <StackLayout orientation="horizontal" style="padding: 70px;">
+                <Label text="&#xf0f5;" class="fab"></Label>
+                <StackLayout class="category">
+                    <Label text="Restaurants" class="vendorName"></Label>
+                    <Label text="from the restaurant you love" class=""></Label>
+                </StackLayout>
             </StackLayout>
-        </StackLayout>
-    </CardView>
+        </CardView>
 
-    <CardView class="cardStyle" elevation="10" radius="2" row="1" style="margin-top: 20px;" margin="10">
-            <StackLayout orientation="horizontal" style="padding: 70px;">
-                    <Label text="&#xf0fc;" class="fab"></Label>
-                    <StackLayout class="category">
-                        <Label text="Party" class="vendorName"></Label>
-                        <Label text="Alcoholic drink and all to get your party started" class=""></Label>
+        <CardView class="cardStyle" elevation="10" radius="2" row="1" style="margin-top: 20px;" margin="10">
+                <StackLayout orientation="horizontal" style="padding: 70px;">
+                        <Label text="&#xf0fc;" class="fab"></Label>
+                        <StackLayout class="category">
+                            <Label text="Party" class="vendorName"></Label>
+                            <Label text="Alcoholic drink and all to get your party started" class="" textWrap="false"></Label>
+                        </StackLayout>
                     </StackLayout>
-                </StackLayout>
-    </CardView>
+        </CardView>
 
-    <CardView class="cardStyle" elevation="10" radius="2" row="2" style="margin-top: 20px;" margin= "10">
-            <StackLayout orientation="horizontal" style="padding: 70px;">
-                    <Label text="&#xf07a;" class="fab"></Label>
-                    <StackLayout class="category">
-                        <Label text="Supermarket" class="vendorName"></Label>
-                        <Label text="Fresh groceries and everyday essential" class=""></Label>
+        <CardView class="cardStyle" elevation="10" radius="2" row="2" style="margin-top: 20px;" margin= "10">
+                <StackLayout orientation="horizontal" style="padding: 70px;">
+                        <Label text="&#xf07a;" class="fab"></Label>
+                        <StackLayout class="category">
+                            <Label text="Supermarket" class="vendorName"></Label>
+                            <Label text="Fresh groceries and everyday essential" class=""></Label>
+                        </StackLayout>
                     </StackLayout>
-                </StackLayout>
-    </CardView>
+        </CardView>
 
-    <CardView class="cardStyle" elevation="10" radius="2" row="3" style="margin-top: 20px;" margin="10">
+        <CardView class="cardStyle" elevation="10" radius="2" row="3" style="margin-top: 20px;" margin="10">
+                <StackLayout orientation="horizontal" style="padding: 70px;">
+                        <Label text="&#xf46b;" class="fas"></Label>
+                        <StackLayout class="category">
+                            <Label text="Pharmacy" class="vendorName"></Label>
+                            <Label text="Medication and personal care" class=""></Label>
+                        </StackLayout>
+                    </StackLayout>
+        </CardView>
+
+        <CardView class="cardStyle" elevation="10" radius="2" row="3" style="margin-top: 20px;" margin="10" row="4">
             <StackLayout orientation="horizontal" style="padding: 70px;">
-                    <Label text="&#xf46b;" class="fas"></Label>
+                    <Label text="&#xf290;" class="fab"></Label>
                     <StackLayout class="category">
-                        <Label text="Pharmacy" class="vendorName"></Label>
+                        <Label text="Shopping" class="vendorName"></Label>
                         <Label text="Medication and personal care" class=""></Label>
                     </StackLayout>
-                </StackLayout>
-    </CardView>
-
-    <CardView class="cardStyle" elevation="10" radius="2" row="3" style="margin-top: 20px;" margin="10" row="4">
-        <StackLayout orientation="horizontal" style="padding: 70px;">
-                <Label text="&#xf290;" class="fab"></Label>
-                <StackLayout class="category">
-                    <Label text="Shopping" class="vendorName"></Label>
-                    <Label text="Medication and personal care" class=""></Label>
-                </StackLayout>
-        </StackLayout>
-    </CardView>
+            </StackLayout>
+        </CardView>
 </GridLayout>
+

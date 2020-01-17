@@ -17,14 +17,14 @@ https://docs.nativescript.org/angular/ui/professional-ui-components/ng-SideDrawe
                     <Label col="1" text="Home" class="p-r-10 h3"></Label>
                 </GridLayout>
 
-                <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/browse')" (tap)="onNavItemTap('/browse')">
+                <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/vendors')" (tap)="onNavItemTap('/vendors')">
                     <Label col="0" text="&#xf041;" class="fa h3"></Label>
-                    <Label col="1" text="Your Location" class="p-r-10 h3"></Label>
+                    <Label col="1" text="Vendors" class="p-r-10 h3"></Label>
                 </GridLayout>
 
                 <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/search')" (tap)="onNavItemTap('/search')">
                     <Label col="0" text="&#xf0f5;" class="fa h3"></Label>
-                    <Label col="1" text="Vendors" class="p-r-10 h3"></Label>
+                    <Label col="1" text="Your Location" class="p-r-10 h3"></Label>
                 </GridLayout>
 
                 <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/featured')" (tap)="onNavItemTap('/featured')">
