@@ -8,6 +8,7 @@ registerElement('CardView', () => CardView);
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 
+import { DataService } from "./service/dataService";
 @NgModule({
     bootstrap: [
         AppComponent
@@ -19,6 +20,9 @@ import { AppComponent } from "./app.component";
     ],
     declarations: [
         AppComponent
+    ],
+    providers: [
+        DataService
     ],
     schemas: [
         NO_ERRORS_SCHEMA
