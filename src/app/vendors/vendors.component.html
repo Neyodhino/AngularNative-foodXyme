@@ -19,8 +19,6 @@
 
     <SearchBar hint="Search for a vendor or product .."></SearchBar>
 
-    <Label text="All vendors" class="title" textWrap="true"> </Label>
-
      <!-- <CardView class="cardStyle" elevation="30" radius="2" row="0" style="margin-top: 20; height: 40%;" margin="10">
         <Image src="~/assets/images/food.jpg" stretch="aspectFill" class="food__image"> </Image>
         <Label text="Hey testing" textWrap="true"></Label>
@@ -29,14 +27,14 @@
     <CardView class="cardStyle" elevation="30" radius="2" row="0" style="margin-top: 20; height: 40%;" margin="10">
             <Label text="Hey" textWrap="true" > </Label>
     </CardView> -->
+    <Label text="All vendors" class="title" textWrap="true"> </Label>
 
-    <GridLayout  row="2" width="100%"
-        backgroundColor="white">
-        <ListView #listview [items]="items" separatorColor="transparent">
-            <ng-template let-item="item">
+    <GridLayout  row="2" width="100%" backgroundColor="white">
+        <ListView #listview [items]="items" separatorColor="blue">
+            <ng-template let-item="item" >
                 <StackLayout class="main">
                     <StackLayout class="content">
-                        <Image stretch="aspectFill" class="card-img" (tap)="showVendor(item.id)"
+                        <Image stretch="aspectFill" class="card-img" (tap)="showItem(item.id)"
                             [src]="item.cover"></Image>
                         <GridLayout width="100%" columns="auto,*" rows="auto,auto"
                             class="" verticalAlignment="center">

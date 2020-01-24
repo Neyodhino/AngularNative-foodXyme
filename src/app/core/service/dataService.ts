@@ -1,15 +1,31 @@
 import { Injectable } from "@angular/core";
-
 import { Item, Category } from "./dataModel";
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs";
 
-@Injectable()
+const BASE_URL = "http://10.73.3.79:8000/";
+
+@Injectable({
+    providedIn: "root"
+})
 export class DataService {
+
+    constructor(
+        private http: HttpClient
+    ) {
+
+    }
+
+    getApiCategory(): Observable<any>{
+        return this.http.get(`${BASE_URL}api/categories`);
+    }
+
     getItems(): Array<Item> {
         return [{
             id: 1,
-            name: "Manila Ultimate Tombstone Burger",
-            cover: "~/app/assets/images/food.jpg",
-            category: "Burger",
+            name: "Bamwill Restaurant",
+            cover: "~/app/assets/images/food2.jpg",
+            category: "Cousine",
             categoryTag: "#2D9CDB",
             price: "300.00",
             likes: 987,
@@ -25,9 +41,9 @@ export class DataService {
         },
         {
             id: 2,
-            name: "Quezon Chocolate Marble Pancake",
+            name: "Mr. Biggs Restaurants",
             cover: "~/app/assets/images/food.jpg",
-            category: "Pancake",
+            category: "Mid Level",
             categoryTag: "#e4ce0d",
             price: "230.00",
             likes: 891,
@@ -43,8 +59,8 @@ export class DataService {
         },
         {
             id: 3,
-            name: "Binondo Black Forest Cake",
-            cover: "~/app/assets/images/food.jpg",
+            name: "Captain Cook Restaurants",
+            cover: "~/app/assets/images/food3.jpg",
             category: "Cake",
             categoryTag: "#27AE60",
             price: "300.00",

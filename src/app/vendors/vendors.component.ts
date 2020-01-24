@@ -3,8 +3,8 @@ import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as app from "tns-core-modules/application";
 import { RouterExtensions } from "nativescript-angular/router";
 
-import { Item, Category } from "../service/dataModel";
-import { DataService } from "../service/dataService";
+import { Item, Category } from "../core/service/dataModel";
+import { DataService } from "../core/service/dataService";
 
 @Component({
     selector: "Vendors",
@@ -30,9 +30,9 @@ export class VendorsComponent implements OnInit {
         const sideDrawer = <RadSideDrawer>app.getRootView();
         sideDrawer.showDrawer();
     }
-    showVendor(itemId) {
+    showItem(itemId) {
         console.log(`Tapped on ${itemId}`);
-        this.routerExtensions.navigate(["detail/" + itemId, {
+        this.routerExtensions.navigate(["vendor/" + itemId, {
             animated: true,
             transition: {
                 name: "slideTop",
