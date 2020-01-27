@@ -4,6 +4,7 @@ import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as app from "tns-core-modules/application";
 
 import { DataService } from "../core/service/dataService";
+import { ICategories } from "../shared/inteerfaces";
 
 @Component({
     selector: "Home",
@@ -12,19 +13,19 @@ import { DataService } from "../core/service/dataService";
 })
 export class HomeComponent implements OnInit {
 
+    categories: Array<ICategories>;
     constructor(private routerExtensions: RouterExtensions, private dataService: DataService) {
         // Use the component constructor to inject providers.
         this.dataService.getApiCategory().subscribe((data) => {
-            console.log(data);
+            this.categories = data.categories;
+            console.log(data.categories);
         },
         (error) => {
             console.log(error);
-        })
+        });
     }
 
-    ngOnInit(): void {
-        // Init your component properties here.
-    }
+    ngOnInit(): void {}
 
     onDrawerButtonTap(): void {
         const sideDrawer = <RadSideDrawer>app.getRootView();
@@ -39,4 +40,3 @@ export class HomeComponent implements OnInit {
         });
     }
 }
-

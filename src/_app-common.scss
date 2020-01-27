@@ -1,6 +1,8 @@
 // Place any CSS rules you want to apply on both iOS and Android here.
 // This is where the vast majority of your CSS code goes.
 // Font icon class
+@import url('https://fonts.googleapis.com/css?family=Muli|Raleway|Uncial+Antiqua&display=swap');
+
 .fab {
     font-family: "FontAwesome";
     width: 40;
@@ -38,6 +40,8 @@
 }
 ActionBar .action-bar-title {
     horizontal-align: center;
+    font-family: 'Raleway', sans-serif;
+
 }
 
  // Drawer navigation custom styles

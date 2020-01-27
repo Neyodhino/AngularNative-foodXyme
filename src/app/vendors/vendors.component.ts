@@ -75,3 +75,4 @@ export class VendorsComponent implements OnInit {
         item.isFavorite = !item.isFavorite;
     }
 }
+

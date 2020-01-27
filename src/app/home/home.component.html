@@ -14,56 +14,25 @@
         </ActionItem>
         <Label class="action-bar-title" text="Select from category"></Label>
     </ActionBar>
-<GridLayout rows="auto, auto, auto, auto, auto" class="page page-content" >
 
-        <CardView class="cardStyle" elevation="10" radius="2" row="0" style="margin-top: 20px;" margin="10" (tap) = "onNavItemTap('/vendors')">
-            <StackLayout orientation="horizontal" style="padding: 70px;">
-                <Label text="&#xf0f5;" class="fab"></Label>
-                <StackLayout class="category">
-                    <Label text="Restaurants" class="vendorName"></Label>
-                    <Label text="from the restaurant you love" class=""></Label>
-                </StackLayout>
-            </StackLayout>
-        </CardView>
+    <GridLayout  row="2" width="100%">
 
-        <CardView class="cardStyle" elevation="10" radius="2" row="1" style="margin-top: 20px;" margin="10">
-                <StackLayout orientation="horizontal" style="padding: 70px;">
-                        <Label text="&#xf0fc;" class="fab"></Label>
-                        <StackLayout class="category">
-                            <Label text="Party" class="vendorName"></Label>
-                            <Label text="Alcoholic drink and all to get your party started" class="" textWrap="false"></Label>
-                        </StackLayout>
-                    </StackLayout>
-        </CardView>
 
-        <CardView class="cardStyle" elevation="10" radius="2" row="2" style="margin-top: 20px;" margin= "10">
-                <StackLayout orientation="horizontal" style="padding: 70px;">
-                        <Label text="&#xf07a;" class="fab"></Label>
-                        <StackLayout class="category">
-                            <Label text="Supermarket" class="vendorName"></Label>
-                            <Label text="Fresh groceries and everyday essential" class=""></Label>
-                        </StackLayout>
-                    </StackLayout>
-        </CardView>
-
-        <CardView class="cardStyle" elevation="10" radius="2" row="3" style="margin-top: 20px;" margin="10">
-                <StackLayout orientation="horizontal" style="padding: 70px;">
-                        <Label text="&#xf46b;" class="fas"></Label>
-                        <StackLayout class="category">
-                            <Label text="Pharmacy" class="vendorName"></Label>
-                            <Label text="Medication and personal care" class=""></Label>
-                        </StackLayout>
-                    </StackLayout>
-        </CardView>
-
-        <CardView class="cardStyle" elevation="10" radius="2" row="3" style="margin-top: 20px;" margin="10" row="4">
-            <StackLayout orientation="horizontal" style="padding: 70px;">
-                    <Label text="&#xf290;" class="fab"></Label>
-                    <StackLayout class="category">
-                        <Label text="Shopping" class="vendorName"></Label>
-                        <Label text="Medication and personal care" class=""></Label>
-                    </StackLayout>
-            </StackLayout>
-        </CardView>
+            <ListView #listview [items]="categories">
+                    <ng-template let-category="item">
+                            <CardView class="cardStyle" elevation="10" radius="2" row="0" style="margin-top: 20px;" margin="10" (tap) = "onNavItemTap('/vendors')">
+                                <StackLayout orientation="horizontal" style="padding: 70px;">
+                                    <Image src="{{ category.icon }}" stretch="aspectFill"
+                                    height="50" width="50"></Image>
+                                    <StackLayout class="category">
+                                        <Label [text]="category.name" class="vendorName"></Label>
+                                        <Label [text]="category.description" class="vendor__description"></Label>
+                                    </StackLayout>
+                                </StackLayout>
+                            </CardView>
+                    </ng-template>
+                </ListView>
 </GridLayout>
+
+
 
