@@ -26,4 +26,3 @@ export class CoreModule extends EnsureModuleLoadedOnceGuard {
         super(parentModule);
     }
 }
-

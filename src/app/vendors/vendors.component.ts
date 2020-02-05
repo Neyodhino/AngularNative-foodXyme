@@ -3,8 +3,8 @@ import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as app from "tns-core-modules/application";
 import { RouterExtensions } from "nativescript-angular/router";
 
-import { Item, Category } from "../core/service/dataModel";
 import { DataService } from "../core/service/dataService";
+import { IVendor } from "../shared/inteerfaces";
 
 @Component({
     selector: "Vendors",
@@ -13,13 +13,13 @@ import { DataService } from "../core/service/dataService";
 })
 export class VendorsComponent implements OnInit {
 
-    items: Array<Item>;
-    categories: Array<Category>;
+    vendors: Array<IVendor>;
 
     constructor(private dataService: DataService, private routerExtensions: RouterExtensions) {
         // Use the component constructor to inject providers.
-        this.items = this.dataService.getItems();
-        this.categories = this.dataService.getCategories();
+      this.dataService.getApiVendors().subscribe(res=>{
+                this.vendors = res.data;
+            });
     }
 
     ngOnInit(): void {
@@ -30,16 +30,16 @@ export class VendorsComponent implements OnInit {
         const sideDrawer = <RadSideDrawer>app.getRootView();
         sideDrawer.showDrawer();
     }
-    showItem(itemId) {
-        console.log(`Tapped on ${itemId}`);
-        this.routerExtensions.navigate(["vendor/" + itemId, {
-            animated: true,
-            transition: {
-                name: "slideTop",
-                duration: 380,
-                curve: "easeIn"
-            }
-        }]);
+    showVendor(vendorId) {
+        // console.log(`Tapped on ${itemId}`);
+        // this.routerExtensions.navigate(["vendor/" + itemId, {
+        //     animated: true,
+        //     transition: {
+        //         name: "slideTop",
+        //         duration: 380,
+        //         curve: "easeIn"
+        //     }
+        // }]);
     }
 
     categoryIcon(itemCategory) {

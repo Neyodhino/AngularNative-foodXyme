@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
         // Use the component constructor to inject providers.
         this.dataService.getApiCategory().subscribe((data) => {
             this.categories = data.categories;
-            console.log(data.categories);
+            console.log(this.categories);
         },
         (error) => {
             console.log(error);
