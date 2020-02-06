@@ -3,7 +3,7 @@ import { Item, Category } from "./dataModel";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 
-const BASE_URL = "http://10.27.2.31:8000/";
+const BASE_URL = "http://192.168.191.2:8000/";
 
 @Injectable({
     providedIn: "root"

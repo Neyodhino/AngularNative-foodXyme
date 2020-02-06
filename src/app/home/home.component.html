@@ -17,8 +17,7 @@
 
     <GridLayout  row="2" width="100%">
 
-
-            <ListView #listview [items]="categories">
+            <ListView #listview [items]="categories" separatorColor="transparent">
                     <ng-template let-category="item">
                             <CardView class="cardStyle" elevation="10" radius="2" row="0" style="margin-top: 20px;" margin="10" (tap) = "onNavItemTap('/vendors')">
                                 <StackLayout orientation="horizontal" style="padding: 70px;">
