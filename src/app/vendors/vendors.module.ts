@@ -18,3 +18,4 @@ import { VendorsComponent } from "./vendors.component";
 })
 export class VendorsModule { }
 
+

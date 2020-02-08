@@ -71,3 +71,4 @@ export class VendorComponent implements OnInit {
         this.routerExtensions.back();
     }
 }
+

@@ -31,11 +31,12 @@ export class HomeComponent implements OnInit {
         const sideDrawer = <RadSideDrawer>app.getRootView();
         sideDrawer.showDrawer();
     }
-
-    onNavItemTap(navItemRoute: string): void {
-        this.routerExtensions.navigate([navItemRoute], {
+    onNavItemTap(idcategories: number): void {
+        this.routerExtensions.navigate(['vendors/'], {
             transition: {
-                name: "fade"
+                name: "slideTop",
+                duration: 380,
+                curve: "easeIn"
             }
         });
     }

@@ -27,43 +27,52 @@
     <CardView class="cardStyle" elevation="30" radius="2" row="0" style="margin-top: 20; height: 40%;" margin="10">
             <Label text="Hey" textWrap="true" > </Label>
     </CardView> -->
-    <Label text="All vendors" class="title" textWrap="true"> </Label>
-
-    <GridLayout  row="2" width="100%" backgroundColor="white">
-        <ListView #listview [items]="vendors" separatorColor="blue">
+    <Label text="All vendors" class="title" textWrap="true" row="0"> </Label>
+    <GridLayout  row="auto, auto" width="100%" backgroundColor="white">
+        <ListView #listview [items]="vendors" separatorColor="transparent" row="1">
             <ng-template let-vendor="item" >
                 <StackLayout class="main">
+                <CardView class="cardStyle" elevation="10" radius="2" row="0" style="margin-top: 20px;" margin="10" (tap)="showVendor(vendor.idvendors)">
                     <StackLayout class="content">
-                        <Image stretch="aspectFill" class="card-img" (tap)="showItem(vendor.id)"
+                        <Image stretch="aspectFill" class="card-img"
                         src="{{ vendor.logo }}"></Image>
-                        <GridLayout width="100%" columns="auto,*" rows="auto,auto"
-                            class="" verticalAlignment="center">
-                            <Label [text]="categoryIcon(vendor.name)" row="0"
-                                col="0" rowSpan="2" [backgroundColor]="vendor.categoryTag"
-                                class="fa category-icon"></Label>
-                            <Label row="0" col="1" class="item-name" textwrap="true"
-                                verticalAlignment="bottom"
-                                horizontalAlignment="left" [text]="vendor.store_name"></Label>
-                            <GridLayout row="1" col="1" rows="auto" columns="auto,auto,auto">
-                                <Label row="0" col="0" class="item-category"
-                                    textwrap="true" verticalAlignment="top"
-                                    horizontalAlignment="left" [text]="vendor.name"></Label>
-                                <Label col="1" row="0" class="fa rating-icon"
-                                    text="&#xf005;"></Label>
-                                <Label col="2" row="0" class="rating-value item-category"
-                                    [text]="vendor.rating"></Label>
+                        <StackLayout orientation="horizontal" row="1" style="background-color: #ffb200; padding: 8;" verticalAlignment="top" width="68" horizontalAlignment="right" marginRight="10" marginTop="-45">
+                            <Label col="1" row="0" class="fa rating-icon"
+                                text="&#xf005;" style="color: black;"></Label>
+                            <Label col="2" row="0" class="rating-value item-category"
+                                text="4.5" style="color: black; font-weight: bold;"></Label>
+                        </StackLayout>
+                        <GridLayout width="90%" columns="auto" rows="auto,auto"
+                            class="" verticalAlignment="center" style="margin-top: 20;">
+                            <StackLayout orientation="horizontal">
+                                <Label row="0" class="item-name" textwrap="true"
+                                    verticalAlignment="bottom"
+                                    horizontalAlignment="left" [text]="vendor.store_name" style="color: black;">
+                                </Label>
+                                <Label row="0" class="item-name" textwrap="true"
+                                    verticalAlignment="bottom"
+                                    horizontalAlignment="left" text=" - " style="color: black;">
+                                </Label>
+                                <Label row="0" class="item-name" textwrap="true"
+                                    verticalAlignment="bottom"
+                                    horizontalAlignment="left" [text]="vendor.address" style="color: black;">
+                                </Label>
+                            </StackLayout>
+                            <GridLayout row="2" rows="auto" columns="auto, *" style="margin-top: 10; margin-bottom: 15;">
+                                <StackLayout orientation ="horizontal" col="0">
+                                    <Label  text="&#xf017;" class="fa" style="font-size: 18;"></Label>
+                                    <Label text="Opens at 8:00am" textWrap="true" style="padding-left: 10; font-size: 16;"> </Label>
+                                </StackLayout>
+                                <StackLayout orientation="horizontal" col="1" style="margin-left: 40;">
+                                    <Label text="&#xf017;" class="fa" style="font-size: 18;"></Label>
+                                    <Label text="closes at 10:00pm" textWrap="true" style="padding-left: 10; font-size: 16;"> </Label>
+                                </StackLayout>
                             </GridLayout>
                         </GridLayout>
-                        <StackLayout width="100%" marginTop="5" class="line"></StackLayout>
-
-
                     </StackLayout>
-
-                    <StackLayout width="100%" class="lineBreak"></StackLayout>
-
+                    </CardView>
                 </StackLayout>
             </ng-template>
         </ListView>
     </GridLayout>
-
 </StackLayout>

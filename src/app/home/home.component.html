@@ -12,14 +12,13 @@
         <ActionItem icon="res://navigation/menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()"
             ios.position="left">
         </ActionItem>
-        <Label class="action-bar-title" text="Select from category"></Label>
+        <Label class="action-bar-title" text="Select from category" android:fontFamily="Roboto Black"></Label>
     </ActionBar>
 
     <GridLayout  row="2" width="100%">
-
             <ListView #listview [items]="categories" separatorColor="transparent">
                     <ng-template let-category="item">
-                            <CardView class="cardStyle" elevation="10" radius="2" row="0" style="margin-top: 20px;" margin="10" (tap) = "onNavItemTap('/vendors')">
+                            <CardView class="cardStyle" elevation="10" radius="2" row="0" style="margin-top: 20px;" margin="10" (tap) = "onNavItemTap()">
                                 <StackLayout orientation="horizontal" style="padding: 70px;">
                                     <Image src="{{ category.icon }}" stretch="aspectFill"
                                     height="50" width="50"></Image>
@@ -32,6 +31,7 @@
                     </ng-template>
                 </ListView>
 </GridLayout>
+
 
 
 
