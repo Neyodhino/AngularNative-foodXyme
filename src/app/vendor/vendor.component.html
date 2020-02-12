@@ -1,14 +1,20 @@
-<StackLayout class="main" verticalAlignment="top">
+<StackLayout
+    class="main"
+    verticalAlignment="top"
+>
 
     <GridLayout class="anim-cover" rows="auto" columns="*">
-        <Image row="0" col="0" marginTop="-40" height="180" stretch="aspectFill"
-            class="card-img" [src]="item.cover"></Image>
-        <Label row="0" col="0" verticalAlignment="top" horizontalAlignment="left"
-            (tap)="onCloseTap()" fontSize="24" text="&#xf060;" class="fa close">
-        </Label>
+        <ListView [items]="vendorInfo" class="list-group">
+            <ng-template let-vendor="item">
+              <StackLayout>
+                    <Image row="0" col="0" height="230" stretch="aspectFill" class="card-img" [src]="vendor.icon"></Image>
+                    <Label row="0" col="0" verticalAlignment="top" horizontalAlignment="left" (tap)="onCloseTap()" fontSize="24" text="&#xf060;"class="fa close"></Label>
+              </StackLayout>
+            </ng-template>
+        </ListView>
     </GridLayout>
 
-    <ScrollView class="anim-images" orientation="horizontal">
+    <!-- <ScrollView class="anim-images" orientation="horizontal">
         <StackLayout orientation="horizontal" class="">
             <GridLayout *ngFor="let imageString of item.images" rows="auto"
                 columns="*">
@@ -16,37 +22,95 @@
                     stretch="aspectFill"></Image>
                 </GridLayout>
         </StackLayout>
-    </ScrollView>
+    </ScrollView> -->
+    <!-- <AbsoluteLayout zIndex="100" style="z-index: 100;">
+            <Label text="20-25 min" left="10" top="-30"padding="20" backgroundColor="red" borderRadius="40" fontWeight="bold" fontSize="20"></Label>
+    </AbsoluteLayout> -->
 
-    <GridLayout rows="auto,auto,auto,auto" columns="auto" class="content">
+    <StackLayout
+        marginTop="-30"
+        marginLeft="270"
+        width="100"
+        androidElevation="4"
+        class="layout-shadow"
+        padding="10"
+        backgroundColor="white"
+        borderRadius="40"
+        class="anim-cover"
+    >
+        <Label
+            text="20-25 min"
+            fontWeight="bold"
+            fontSize="16"
+            color="black"
+        ></Label>
+    </StackLayout>
 
-        <GridLayout *ngIf="item" class="anim-itemInfo" marginTop="15" row="1"
-            width="100%" columns="auto,*" rows="auto,auto,auto,auto"
-            verticalAlignment="center">
-            <Label [text]="categoryIcon() " row="0" col="0" rowSpan="2"
-                [backgroundColor]="item.categoryTag" class="fa category-icon"></Label>
-            <Label row="0" col="1" class="item-name" textwrap="true"
-                verticalAlignment="bottom" horizontalAlignment="left" [text]="item.name"></Label>
+    <GridLayout
+        rows="auto,auto,auto,auto"
+        columns="auto"
+        class="content"
+    >
 
-            <Label row="1" col="1" class="item-category" textwrap="true"
-                verticalAlignment="top" horizontalAlignment="left" [text]="item.category"></Label>
-            <Label row="2" col="1" class="item-category" [text]="'Average Rate:' + item.rating "></Label>
+        <GridLayout
+            class="anim-itemInfo"
+            marginTop="15"
+            row="1"
+            columns="auto,*"
+            rows="auto,auto"
+            verticalAlignment="center"
+        >
+        <ListView [items]="vendorInfo" class="list-group">
+            <ng-template let-vendor ="item" let-odd="odd" let-even="even">
+              <StackLayout>
+                    <StackLayout
+                    orientation="horizontal"
+                    row="0"
+                    color="black"
+                >
+                <Label
+                    [text]="vendor.store_name"
+                    fontSize="17"
+                    fontWeight="bold"
+                >
+                </Label>
+                <Label
+                    text=" - "
+                    fontSize="17"
+                    fontWeight="bold"
+                ></Label>
+                <Label
+                    [text]="vendor.address"
+                    fontSize="17"
+                    fontWeight="bold"
+                >
+                </Label>
+                </StackLayout>
 
-
-            <StackLayout row="3" col="1" orientation="horizontal">
-                <Label class="fa rate" text="&#xf005;"></Label>
-                <Label class="fa rate" text="&#xf005;"></Label>
-                <Label class="fa rate" text="&#xf005;"></Label>
-                <Label class="fa rate" text="&#xf005;"></Label>
-                <Label class="fa rate" text="&#xf123;"></Label>
+                <StackLayout
+                orientation="horizontal"
+                row="1"
+                marginTop="5"
+            >
+                <Label
+                    class="fa rating-icon"
+                    text="&#xf005;"
+                    fontSize="20"
+                ></Label>
+                <Label
+                    [text]="vendor.rating"
+                    fontSize="18"
+                    fontWeight="bold"
+                    marginLeft="5"
+                ></Label>
             </StackLayout>
 
-
+              </StackLayout>
+            </ng-template>
+        </ListView>
         </GridLayout>
 
-        <StackLayout class="line anim-likes" row="2" width="100%" marginTop="10"></StackLayout>
-
-        <GridLayout *ngIf="item" columns="auto,*,auto,auto" rows="auto"
+        <!-- <GridLayout *ngIf="item" columns="auto,*,auto,auto" rows="auto"
             marginTop="5" width="100%" row="3" class="anim-likes">
             <GridLayout col="0" rows="auto" columns="auto,auto" (tap)="toggleLike(item)">
                 <Label col="0" row="0" #like [class]="item.isLike ? 'fa like-icon liked-active' : 'fa like-icon default'"
@@ -68,32 +132,56 @@
                 <Label class="layout" text="Share"></Label>
             </StackLayout>
 
-        </GridLayout>
+        </GridLayout> -->
     </GridLayout>
-
     <StackLayout width="100%" class="lineBreak anim-likes"></StackLayout>
-
-    <Gridlayout rows="auto,*" class="content anim-content" marginTop="15">
-
-        <GridLayout row="0" rows="auto" marginBottom="5" columns="auto, auto">
-            <Label col="0" text="&#xf02c;" class="fa description-icon"
-                textWrap="true"></Label>
-            <Label col="1" class="description-text" text="Description"
-                textWrap="true"></Label>
-        </GridLayout>
-
-        <StackLayout row="1">
-            <ScrollView>
-                <StackLayout verticalAlignment="top" horizontalAlignment="left"
-                    *ngIf="item">
-                    <Textview editable="false" class="description-value"
-                        textWrap="true" [text]="item.description">
-                    </Textview>
-                </StackLayout>
-            </ScrollView>
+    <TabView
+        selectedTabTextColor="#ffb200"
+        tabBackgroundColor="white"
+        tabTextFontSize="16"
+        androidSelectedTabHighlightColor="#ffb200"
+    >
+        <StackLayout *tabItem="{title: 'Order'}">
+            <ListView [items]="vendorStockList" class="list-group">
+                <ng-template let-stockList="item" let-odd="odd" let-even="even">
+                  <StackLayout>
+                        <StackLayout marginLeft="10" marginRight="10" marginTop="10">
+                            <Label text="swallow" fontSize="18" fontWeight="bold" color="black"> </Label>
+                        </StackLayout>
+                            <GridLayout marginLeft="10" marginRight="10" marginTop="10" class="layout-shadow" style="border: 1px solid gray;">
+                                <ListView [items]="stockList.Swallows" class="list-group">
+                                    <ng-template let-swallow="item" let-odd="odd" let-even="even">
+                                      <StackLayout>
+                                         <StackLayout padding="13">
+                                            <Label [text]="swallow.name" fontSize="18" color="black" fontWeight="bold"></Label>
+                                            <Label [text]="swallow.stockprice" fontSize="13" color="black" marginTop="3"></Label>
+                                         </StackLayout>
+                                      </StackLayout>
+                                    </ng-template>
+                                </ListView>
+                            </GridLayout>
+                  </StackLayout>
+                </ng-template>
+            </ListView>
         </StackLayout>
-
-
-    </Gridlayout>
+        <StackLayout *tabItem="{title: 'Gallery'}">
+            <Label
+                text="Second Tab"
+                textWrap="true"
+            ></Label>
+        </StackLayout>
+        <StackLayout *tabItem="{title: 'Rating & Review'}">
+            <Label
+                text="Second Tab"
+                textWrap="true"
+            ></Label>
+        </StackLayout>
+        <StackLayout *tabItem="{title: 'Restaurant Info'}">
+            <Label
+                text="Second Tab"
+                textWrap="true"
+            ></Label>
+        </StackLayout>
+    </TabView>
 
 </StackLayout>

@@ -1,7 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { RouterExtensions, PageRoute } from "nativescript-angular/router";
 import { switchMap } from "rxjs/operators";
-import { Item } from "../core/service/dataModel";
+import { Page } from "tns-core-modules/ui/page/page";
+
+import { IVendor } from '../shared/inteerfaces';
 import { DataService } from "../core/service/dataService";
 
 @Component({
@@ -11,64 +13,34 @@ import { DataService } from "../core/service/dataService";
 })
 export class VendorComponent implements OnInit {
     itemId: number;
-    item: Item;
-    items: Array<Item>;
+    vendorInfo: IVendor;
+    vendorStockList;
     constructor(
         private pageRoute: PageRoute,
         private routerExtensions: RouterExtensions,
-        // private page: Page,
-        private dataService: DataService) {
+        private dataService: DataService,
+        private page: Page
+        ) {
 
-        this.items = this.dataService.getItems();
-
-        // this.page.actionBarHidden = true;
+        this.page.actionBarHidden = true;
 
         this.pageRoute.activatedRoute.pipe(
             switchMap((activatedRoute) => activatedRoute.params)
         ).forEach((params) => {
             this.itemId = +params["id"];
-            this.item = this.items.filter(item => item.id == this.itemId)[0];
+            console.log(this.itemId);
+            this.dataService.getApiVendor(this.itemId).subscribe((response) => {
+                this.vendorInfo = response.vendor;
+                this.vendorStockList = response.stock_list;
+                console.log(this.vendorInfo);
+                console.log(this.vendorStockList);
+            }, (error) => console.log(error));
         });
     }
 
-    ngOnInit(): void { }
-
-
-    toggleLike() {
-        this.item.isLike = !this.item.isLike;
-        if (this.item.isLike) {
-            this.item.likes += 1;
-        } else {
-            this.item.likes -= 1;
-        }
-    }
-
-    toggleHeart(item) {
-        item.isFavorite = !item.isFavorite;
-    }
-
-    categoryIcon() {
-        switch (this.item.categoryTag) {
-            case "Burger":
-                return String.fromCharCode(0xf0f5); //"fa-cutlery";
-                break;
-            case "Beer":
-                return String.fromCharCode(0xf0fc); //"fa-beer";
-                break;
-            case "Pancake":
-                return String.fromCharCode(0xf0f4); //"fa-coffee";
-                break;
-            case "Cake":
-                return String.fromCharCode(0xf1fd); //"fa-birthday-cake";
-                break;
-            default:
-                return String.fromCharCode(0xf06d); //"fa-fire";
-                break;
-        }
-    }
+    ngOnInit(): void {}
 
     onCloseTap(): void {
         this.routerExtensions.back();
     }
 }
-

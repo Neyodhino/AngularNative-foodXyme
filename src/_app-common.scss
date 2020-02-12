@@ -173,6 +173,11 @@ $sidedrawer-list-icon-size: 20;
         padding: 5 0 5 0;
     }
 
+    .layout-shadow {
+        border-width: 1;
+        border-color: transparent;
+    }
+
     .like-icon {
         vertical-align: bottom;
         height: 30;
@@ -220,15 +225,15 @@ $sidedrawer-list-icon-size: 20;
     .line {
         height: 0.5;
         border: none;
-        color: #e0e0e0;
-        background-color: #e0e0e0;
+        color: #fcfcfc;
+        background-color: #fcfcfc;
     }
 
     .lineBreak {
-        height: 7;
-        border: none;
-        color: #e0e0e0;
-        background-color: #e0e0e0;
+        height: 20;
+        border: 2;
+        color: #d1cece5b;
+        background-color: #d1cece5b;
     }
 
         .default-img {

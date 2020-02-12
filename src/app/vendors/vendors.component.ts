@@ -52,48 +52,15 @@ export class VendorsComponent implements OnInit {
     sideDrawer.showDrawer();
   }
   showVendor(vendorId) {
-    // console.log(`Tapped on ${itemId}`);
-    // this.routerExtensions.navigate(["vendor/" + itemId, {
-    //     animated: true,
-    //     transition: {
-    //         name: "slideTop",
-    //         duration: 380,
-    //         curve: "easeIn"
-    //     }
-    // }]);
-    console.log(vendorId);
+    console.log(`Tapped on ${vendorId}`);
+    this.routerExtensions.navigate(["vendor/" + vendorId, {
+        animated: true,
+        transition: {
+            name: "slideTop",
+            duration: 100,
+            curve: "easeIn"
+        }
+    }]);
   }
 
-  categoryIcon(itemCategory) {
-    switch (itemCategory) {
-      case "Burger":
-        return String.fromCharCode(0xf0f5); //"fa-cutlery";
-        break;
-      case "Beer":
-        return String.fromCharCode(0xf0fc); //"fa-beer";
-        break;
-      case "Pancake":
-        return String.fromCharCode(0xf0f4); //"fa-coffee";
-        break;
-      case "Cake":
-        return String.fromCharCode(0xf1fd); //"fa-birthday-cake";
-        break;
-      default:
-        return String.fromCharCode(0xf06d); //"fa-fire";
-        break;
-    }
-  }
-
-  toggleLike(item) {
-    item.isLike = !item.isLike;
-    if (item.isLike) {
-      item.likes += 1;
-    } else {
-      item.likes -= 1;
-    }
-  }
-
-  toggleHeart(item) {
-    item.isFavorite = !item.isFavorite;
-  }
 }
