@@ -1,7 +1,7 @@
 <GridLayout rows="auto, auto, auto" columns="*" height="200" width="400">
     <StackLayout row="0" marginTop="20">
-        <Label text="Amala" textWrap="true" color="black" marginLeft="20" marginRight="20" fontSize="18" fontWeight="600" class="text-font" > </Label>
-        <Label text="N 200" textWrap="true" color="black" marginLeft="20" marginRight="20" fontSize="15" fontWeight="300" class="text-font"> </Label>
+        <Label [text]="stockItemName" textWrap="true" color="black" marginLeft="20" marginRight="20" fontSize="18" fontWeight="600" class="text-font" > </Label>
+        <Label [text]="stockItemPrice" textWrap="true" color="black" marginLeft="20" marginRight="20" fontSize="15" fontWeight="300" class="text-font"> </Label>
     </StackLayout>
     <StackLayout class="hr-light" row="1" marginTop="12"></StackLayout>
     <FlexboxLayout flexDirection="row" row="2" margin="20" justifyContent="space-around">
@@ -10,7 +10,7 @@
         <Label text="&#xf0fe;" class="fa h1" color="green" fontSize="60" (tap)="increaseCounter()"></Label>
         <Button class="-primary" color="white" backgroundColor="green">
             <FormattedString>
-                <Span text="N 200"></Span>
+                <Span [text]="stockTotalPrice"></Span>
                 <Span text=" ADD TO CART"></Span>
             </FormattedString>
         </Button>

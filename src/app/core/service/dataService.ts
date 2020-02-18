@@ -26,6 +26,7 @@ export class DataService {
     getApiVendor(id: number): Observable<any> {
         return this.http.get(`${BASE_URL}api/vendor/${id}`);
     }
+    
 
     getVendors() {
         return  [{

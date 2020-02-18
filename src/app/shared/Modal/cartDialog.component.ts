@@ -1,24 +1,37 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
+import { ModalDialogParams } from "nativescript-angular/modal-dialog";
 
 @Component({
-    selector: 'cart-dialog',
-    templateUrl: './cartDialog.component.html',
-    styleUrls: ['./cartDialog.component.scss']
+    selector: "cart-dialog",
+    templateUrl: "./cartDialog.component.html",
+    styleUrls: ["./cartDialog.component.scss"]
 })
 export class CartDialogComponent implements OnInit {
 
     counter: number = 1;
-    minimumCounter = 1;
     setFlag: boolean = true;
-    constructor() {}
+    stockItemId: number;
+    stockItemPrice: number;
+    stockItemName: string;
+    stockTotalPrice: number;
+    constructor(
+        private params: ModalDialogParams
+    ) {
+        this.stockItemId = params.context.stockId;
+        this.stockItemPrice = params.context.stockPrice;
+        this.stockItemName = params.context.stockName;
+        this.stockTotalPrice = this.stockItemPrice;
+    }
 
     increaseCounter() {
         this.counter = this.counter + 1;
+        this.stockTotalPrice = this.stockTotalPrice + this.stockItemPrice
     }
     decreaseCounter() {
-        if (this.counter > this.minimumCounter) {
+        if (this.counter > 1) {
             this.setFlag = false;
             this.counter = this.counter - 1;
+            this.stockTotalPrice = this.stockTotalPrice - this.stockItemPrice;
         } else {
             this.setFlag = true;
         }
