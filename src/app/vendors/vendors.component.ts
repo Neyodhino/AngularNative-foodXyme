@@ -13,7 +13,7 @@ import { IVendor } from "../shared/inteerfaces";
   styleUrls: ["./vendors.component.scss"]
 })
 export class VendorsComponent implements OnInit {
-  vendors: Array<IVendor>;
+  vendors: Array<object>;
   idCategories: string;
 
   constructor(
@@ -33,13 +33,15 @@ export class VendorsComponent implements OnInit {
     //       });
     // });
 
-    this.dataService.getApiVendors().subscribe((response) => {
-        this.vendors = response.data;
-        console.log(this.vendors);
-    },
-    (error) => {
-        console.log(error);
-    });
+    // this.dataService.getApiVendors().subscribe((response) => {
+    //     this.vendors = response.data;
+    //     console.log(this.vendors);
+    // },
+    // (error) => {
+    //     console.log(error);
+    // });
+
+    this.vendors = this.dataService.getVendors();
 
   }
 

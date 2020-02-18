@@ -1,8 +1,10 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewContainerRef } from "@angular/core";
 import { RouterExtensions, PageRoute } from "nativescript-angular/router";
 import { switchMap } from "rxjs/operators";
 import { Page } from "tns-core-modules/ui/page/page";
+import { ModalDialogService } from "nativescript-angular/modal-dialog";
 
+import { CartDialogComponent } from '../shared/Modal/cartDialog.component';
 import { IVendor } from '../shared/inteerfaces';
 import { DataService } from "../core/service/dataService";
 
@@ -13,29 +15,33 @@ import { DataService } from "../core/service/dataService";
 })
 export class VendorComponent implements OnInit {
     itemId: number;
-    vendorInfo: IVendor;
-    vendorStockList;
+    item;
+    data;
+
     constructor(
         private pageRoute: PageRoute,
         private routerExtensions: RouterExtensions,
         private dataService: DataService,
-        private page: Page
+        private page: Page,
+        private modalDialog: ModalDialogService,
+        private vcRef: ViewContainerRef
         ) {
 
         this.page.actionBarHidden = true;
 
-        this.pageRoute.activatedRoute.pipe(
-            switchMap((activatedRoute) => activatedRoute.params)
-        ).forEach((params) => {
-            this.itemId = +params["id"];
-            console.log(this.itemId);
-            this.dataService.getApiVendor(this.itemId).subscribe((response) => {
-                this.vendorInfo = response.vendor;
-                this.vendorStockList = response.stock_list;
-                console.log(this.vendorInfo);
-                console.log(this.vendorStockList);
-            }, (error) => console.log(error));
-        });
+        // this.pageRoute.activatedRoute.pipe(
+        //     switchMap((activatedRoute) => activatedRoute.params)
+        // ).forEach((params) => {
+        //     this.itemId = +params["id"];
+        //     console.log(this.itemId);
+        //     this.dataService.getSwallow().subscribe((response) => {
+        //     this.item = response.data;
+        //     console.log(this.item);
+        // }, (error) => console.log(error));
+        // });
+
+        this.data = this.dataService.getSwallow();
+        console.log(this.data);
     }
 
     ngOnInit(): void {}
@@ -43,4 +49,12 @@ export class VendorComponent implements OnInit {
     onCloseTap(): void {
         this.routerExtensions.back();
     }
+
+    openModal() {
+        this.modalDialog.showModal(CartDialogComponent, {
+            fullscreen: false,
+            viewContainerRef: this.vcRef
+        });
+    }
+
 }
