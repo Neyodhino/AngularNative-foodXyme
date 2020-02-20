@@ -50,14 +50,12 @@ export class VendorComponent implements OnInit {
         this.routerExtensions.back();
     }
 
-    openModal(id: number, price: number, name: string) {
+    openModal(item) {
         this.modalDialog.showModal(CartDialogComponent, {
             fullscreen: false,
             viewContainerRef: this.vcRef,
             context: {
-                stockId: id,
-                stockPrice: price,
-                stockName: name
+                stockItem: item
             }
         });
     }

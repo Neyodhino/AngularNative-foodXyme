@@ -8,7 +8,7 @@
         <Label text="&#xf146;" class="fa h1 decrease" color="green" fontSize="60" (tap)="decreaseCounter()" [disabled]="setFlag" ></Label>
         <Label [text]="counter" class="fa h1" color="black" fontSize="50" ></Label>
         <Label text="&#xf0fe;" class="fa h1" color="green" fontSize="60" (tap)="increaseCounter()"></Label>
-        <Button class="-primary" color="white" backgroundColor="green">
+        <Button class="-primary" color="white" backgroundColor="green" (tap)="addToCart()">
             <FormattedString>
                 <Span [text]="stockTotalPrice"></Span>
                 <Span text=" ADD TO CART"></Span>
@@ -16,3 +16,4 @@
         </Button>
     </FlexboxLayout>
 </GridLayout>
+

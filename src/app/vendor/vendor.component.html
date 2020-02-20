@@ -106,7 +106,7 @@
                 <StackLayout *ngFor="let category of items | keyvalue " margin="10">
                     <Label [text]="category.key" color="black" fontSize="19" fontWeight="bold" class="text-font"></Label>
                     <StackLayout marginTop="9">
-                        <StackLayout *ngFor="let item of category.value" margin="5" (tap)="openModal(item.idstockdetails, item.stockprice, item.name)">
+                        <StackLayout *ngFor="let item of category.value" margin="5" (tap)="openModal(item)">
                             <Label [text]="item.name" color="black" fontSize="16" class="text-font"></Label>
                             <Label [text]="item.description" textWrap="true" marginTop="4" class="text-font"></Label>
                             <Label [text]="item.stockprice" marginTop="4" color="black" class="text-font"></Label>

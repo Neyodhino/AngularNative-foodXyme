@@ -14,18 +14,21 @@ export class CartDialogComponent implements OnInit {
     stockItemPrice: number;
     stockItemName: string;
     stockTotalPrice: number;
+    stockItemDetails;
     constructor(
         private params: ModalDialogParams
     ) {
-        this.stockItemId = params.context.stockId;
-        this.stockItemPrice = params.context.stockPrice;
-        this.stockItemName = params.context.stockName;
-        this.stockTotalPrice = this.stockItemPrice;
+        // this.stockItemId = params.context.stockId;
+        // this.stockItemPrice = params.context.stockPrice;
+        // this.stockItemName = params.context.stockName;
+        // this.stockTotalPrice = this.stockItemPrice;
+        this.stockItemDetails = params.context.stockItem;
+        console.log(this.stockItemDetails);
     }
 
     increaseCounter() {
         this.counter = this.counter + 1;
-        this.stockTotalPrice = this.stockTotalPrice + this.stockItemPrice
+        this.stockTotalPrice = this.stockTotalPrice + this.stockItemPrice;
     }
     decreaseCounter() {
         if (this.counter > 1) {
@@ -37,5 +40,10 @@ export class CartDialogComponent implements OnInit {
         }
     }
 
+    addToCart() {
+        console.log(this.stockTotalPrice);
+    }
+
     ngOnInit(): void {}
 }
+
